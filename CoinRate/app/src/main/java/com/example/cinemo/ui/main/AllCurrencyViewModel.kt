@@ -106,8 +106,6 @@ class AllCurrencyViewModel (private val coinRepo : CoinRateRepository) : BaseVie
                         gbpItemsList.add(CoinItem.CoinItemDetail(gbp))
                         eurItemsList.add(CoinItem.CoinItemDetail(eur))
                     }
-
-
                     coinItems.value = coinItemsList
                 }
                 is ApiResult.Error -> {

@@ -2,8 +2,8 @@ package com.example.cinemo.ui.main.view_holder
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cinemo.R
 import com.example.cinemo.databinding.ItemCoinBinding
+import com.example.cinemo.R
 import com.example.cinemo.ui.main.adapter.CoinItem
 import com.example.cinemo.ui.main.model.CoinItemModel
 

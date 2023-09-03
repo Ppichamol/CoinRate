@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.cinemo.R
-import com.example.cinemo.base.BaseActivity
 import com.example.cinemo.databinding.ActivityMainBinding
+import com.example.cinemo.base.BaseActivity
 
 class MainActivity : BaseActivity() {
 

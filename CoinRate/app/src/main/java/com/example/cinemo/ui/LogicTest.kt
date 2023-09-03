@@ -2,6 +2,7 @@ package com.example.cinemo.ui
 
 class LogicTest {
 
+
     private fun validate(input: Int): Boolean {
         val inputString = input.toString()
         val inputArray = inputString.toCharArray()

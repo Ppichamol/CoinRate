@@ -1,19 +1,14 @@
 package com.example.cinemo.ui.main
 
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.ListAdapter
-import android.widget.Toast
 import androidx.activity.addCallback
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cinemo.R
+import com.example.cinemo.databinding.FragmentCoinRateBinding
 import com.example.cinemo.base.BaseFragment
 import com.example.cinemo.base.StatusBarTextFlag
-import com.example.cinemo.databinding.FragmentCoinRateBinding
 import com.example.cinemo.ui.main.AllCurrencyViewModel.Companion.BTC_DEFAULT_AMOUNT
 import com.example.cinemo.ui.main.adapter.CoinAdapter
 import com.example.cinemo.ui.main.model.CoinItemModel
@@ -24,7 +19,7 @@ class AllCurrencyFragment: BaseFragment<FragmentCoinRateBinding, AllCurrencyView
 {
     override val viewModel: AllCurrencyViewModel by viewModel()
     private lateinit var coinAdapter : CoinAdapter
-
+    private var currency: String = "USD"
 
     override fun setupView() {
         onBackInvokedCallback()
@@ -48,7 +43,7 @@ class AllCurrencyFragment: BaseFragment<FragmentCoinRateBinding, AllCurrencyView
                 binding.fieldError.visibility = View.INVISIBLE
                 binding.edittext.isActivated = false
                 viewModel.calculateBtc(
-                    "USD", binding.edittext.text.toString().toDouble()
+                    currency, binding.edittext.text.toString().toDouble()
                 )
 
             }
@@ -81,10 +76,13 @@ class AllCurrencyFragment: BaseFragment<FragmentCoinRateBinding, AllCurrencyView
         binding.dropdownMenu.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
                 val item = parent?.getItemAtPosition(pos)
+                currency = item.toString()
                 binding.currency.text = item.toString()
                 binding.edittext.clearFocus()
                 binding.edittext.setText("")
                 binding.btcAmount.text = String.format("%.8f", BTC_DEFAULT_AMOUNT)
+                binding.fieldError.visibility = View.INVISIBLE
+                binding.edittext.isActivated = false
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) { }
@@ -99,9 +97,7 @@ class AllCurrencyFragment: BaseFragment<FragmentCoinRateBinding, AllCurrencyView
     }
 
     private fun onBackInvokedCallback() {
-        requireActivity().onBackPressedDispatcher.addCallback(this) {
-            findNavController().popBackStack()
-        }
+        requireActivity().onBackPressedDispatcher.addCallback(this) { }
     }
 
 
