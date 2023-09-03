@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_home"
+    app:startDestination="@id/allCurrencyFragment">
+    <fragment
+        android:id="@+id/allCurrencyFragment"
+        android:name="com.example.cinemo.ui.main.AllCurrencyFragment"
+        android:label="AllCurrencyFragment" >
+        <action
+            android:id="@+id/action_allCurrencyFragment_to_coinHistoryFragment"
+            app:destination="@id/coinHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coinHistoryFragment"
+        android:name="com.example.cinemo.ui.coin_history.CoinHistoryFragment"
+        android:label="CoinHistoryFragment" >
+        <argument
+            android:name="CoinList"
+            app:argType="com.example.cinemo.ui.main.adapter.CoinItem[]" />
+    </fragment>
+</navigation>

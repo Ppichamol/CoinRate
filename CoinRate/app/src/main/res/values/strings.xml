@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Coin Rate</string>
+    <string name="view_more">View History</string>
+    <string name="coin_history">Coin History</string>
+</resources>
